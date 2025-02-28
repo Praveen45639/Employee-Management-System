@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Employee Management System</title>
+		<style>
+			table{
+				width:80%;
+				padding-left: 20px;
+			}
+				td{
+					padding-left: 50px;
+				}
+			button{
+				color: white;
+				background-color: blue;
+				size: 10px;
+			}
+			h1{
+				color:dodgerblue;
+			}
+			#btn{
+				color: white;
+				background-color: red;
+				size: 10px;
+			}
+		</style>
+		
+		
+	</head>
+	<body>
+		<div>
+			<a th:href="@{/showNewEmployeeForm}"><button> Add Employee </button></a>
+			<h1>Employees List</h1>
+			<table border="4">
+				<thead>
+								<tr>
+									<th>Employee First Name</th>
+									<th>Employee Last Name</th>
+									<th>Employee Email</th>
+									<th>Actions</th>
+								</tr>
+								
+							</thead>
+							<tbody>
+								<tr th:each="employee: ${listEmployees}">
+									<td th:text=" ${employee.firstName}"></td>
+									<td th:text=" ${employee.lastName}"></td>
+									<td th:text=" ${employee.email}"></td>
+					<td><a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}"><button>Update</button></a></td>
+					<td><a th:href="@{/deleteEmployee/{id}(id=${employee.id})}"><button id="btn">Delete</button></a></td>
+
+								</tr>
+								
+							</tbody>
+			</table>
+		</div>
+	</body>
+</html>
